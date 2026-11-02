@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='16 16 128 128'%3E%3Cdefs%3E%3CradialGradient id='g' cx='88' cy='70' r='78' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23FFF6E8'/%3E%3Cstop offset='.16' stop-color='%23FFD166'/%3E%3Cstop offset='.42' stop-color='%23FF8C42'/%3E%3Cstop offset='.72' stop-color='%23FF6B35'/%3E%3Cstop offset='1' stop-color='%23E0461A'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='80' cy='80' r='64' fill='url(%23g)'/%3E%3C/svg%3E">
+<meta property="og:title" content="Febricor | ThermalSense">
+<meta property="og:description" content="AI-powered thermal imaging for early breast cancer screening in rural and underserved communities.">
+<meta property="og:url" content="https://febricor.com">
+<title>Febricor | ThermalSense</title>
+<meta name="description" content="Febricor builds ThermalSense, an AI-powered thermal imaging tool for early breast cancer screening in rural and underserved communities.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+/* Layout: navy thermal hero with a heat-signature graphic, then calm light sections on a 1120px column. */
+:root {
+  --ink: #0D1B3E;
+  --ink-soft: #16264F;
+  --paper: #F7F5F2;
+  --surface: #FFFFFF;
+  --line: #E6E1DA;
+  --text: #0D1B3E;
+  --muted: #4A5568;
+  --accent: #FF6B35;
+  --accent-text: #C2410C;
+  --on-ink: #F7F5F2;
+  --on-ink-muted: #C9D3E6;
+  --font-display: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  --font-body: 'DM Sans', 'Segoe UI', Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0A1430; --surface: #111F45; --line: #22325E;
+    --text: #EEF1F7; --muted: #B4C0D8; --accent-text: #FF9A6B;
+    --ink: #060E24; --ink-soft: #13224A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0A1430; --surface: #111F45; --line: #22325E;
+  --text: #EEF1F7; --muted: #B4C0D8; --accent-text: #FF9A6B;
+  --ink: #060E24; --ink-soft: #13224A;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--text); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--font-display); margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-text); }
+
+/* Header + hero */
+.hero { background: var(--ink); color: var(--on-ink); position: relative; overflow: hidden; }
+.hero::after { content: ""; position: absolute; right: -180px; top: -120px; width: 720px; height: 720px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,209,102,.42) 0%, rgba(255,140,66,.28) 24%, rgba(255,107,53,.12) 46%, rgba(13,27,62,0) 70%); pointer-events: none; }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 22px; position: relative; z-index: 1; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--font-display); font-weight: 600; font-size: 24px; color: var(--on-ink); }
+.brand svg { width: 34px; height: 34px; flex: none; }
+.nav-links { display: flex; gap: 24px; font-size: 15px; }
+.nav-links a { text-decoration: none; color: var(--on-ink-muted); }
+.nav-links a:hover { color: var(--on-ink); }
+.hero-body { display: grid; grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: center; padding-block: 56px 88px; position: relative; z-index: 1; }
+.hero-body > * { min-width: 0; }
+.hero .eyebrow { color: #FF9A6B; }
+.hero h1 { font-size: clamp(34px, 5vw, 56px); line-height: 1.12; font-weight: 600; margin-top: 14px; }
+.hero-lede { font-size: 19px; color: var(--on-ink-muted); max-width: 34em; margin-top: 20px; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.btn { display: inline-block; padding: 13px 22px; border-radius: 999px; font-weight: 700; font-size: 15px; text-decoration: none; border: 2px solid transparent; cursor: pointer; font-family: var(--font-body); }
+.btn-primary { background: var(--accent); color: #0D1B3E; }
+.btn-primary:hover { background: #FF8C42; }
+.btn-ghost { border-color: rgba(247,245,242,.35); color: var(--on-ink); }
+.btn-ghost:hover { border-color: var(--on-ink); }
+.scan { aspect-ratio: 1; max-width: 100%; width: 400px; justify-self: center; position: relative; }
+.scan svg { width: 100%; height: auto; display: block; }
+.scan-label { position: absolute; left: 50%; bottom: 6%; transform: translateX(-50%); background: rgba(6,14,36,.78); color: var(--on-ink); font-size: 13px; padding: 6px 12px; border-radius: 999px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* Sections */
+section.block { padding-block: 88px; }
+section.block + section.block { border-top: 1px solid var(--line); }
+.head { display: flex; flex-direction: column; gap: 12px; max-width: 760px; margin-bottom: 44px; }
+.head h2 { font-size: clamp(28px, 3.6vw, 40px); line-height: 1.18; font-weight: 600; }
+.head p { color: var(--muted); font-size: 18px; }
+
+.stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 32px; }
+.stat strong { display: block; font-family: var(--font-display); font-size: clamp(48px, 7vw, 72px); line-height: 1; font-weight: 700; font-variant-numeric: tabular-nums; }
+.stat.late strong { color: var(--accent-text); }
+.stat p { color: var(--muted); margin-top: 12px; }
+.source { font-size: 14px; color: var(--muted); margin-top: 16px; }
+
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: step; list-style: none; padding: 0; margin: 0; }
+.steps li { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 26px; min-width: 0; }
+.steps li::before { counter-increment: step; content: counter(step); font-family: var(--font-display); font-weight: 700; font-size: 34px; color: var(--accent); display: block; line-height: 1; margin-bottom: 14px; }
+.steps h3 { font-size: 20px; margin-bottom: 8px; }
+.steps p { color: var(--muted); font-size: 16px; }
+.note { margin-top: 24px; color: var(--muted); font-size: 16px; }
+
+.audience { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.audience div { min-width: 0; border-top: 3px solid var(--accent); padding-top: 18px; }
+.audience h3 { font-size: 21px; margin-bottom: 8px; }
+.audience p { color: var(--muted); }
+
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.split > * { min-width: 0; }
+.metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.metric { background: var(--ink); color: var(--on-ink); border-radius: 18px; padding: 26px; }
+.metric strong { display: block; font-family: var(--font-display); font-size: 44px; line-height: 1; color: #FF9A6B; font-variant-numeric: tabular-nums; }
+.metric span { display: block; color: var(--on-ink-muted); margin-top: 10px; font-size: 15px; }
+.checks { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.checks li { display: flex; gap: 12px; align-items: flex-start; }
+.checks li::before { content: ""; flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); margin-top: 9px; }
+
+.founder { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 36px; display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; }
+.founder > * { min-width: 0; }
+.monogram { width: 96px; height: 96px; border-radius: 50%; background: var(--ink); color: var(--on-ink); display: grid; place-items: center; font-family: var(--font-display); font-weight: 600; font-size: 32px; }
+.founder h3 { font-size: 24px; }
+.founder .role { color: var(--accent-text); font-weight: 700; margin-top: 2px; }
+.founder p.bio { color: var(--muted); margin-top: 12px; max-width: 62ch; }
+
+.contact { background: var(--ink); color: var(--on-ink); }
+.contact .head p { color: var(--on-ink-muted); }
+.contact .eyebrow { color: #FF9A6B; }
+.contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 760px; }
+.contact-item { background: var(--ink-soft); border-radius: 16px; padding: 22px 24px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.contact-item > div { min-width: 0; }
+.contact-item small { display: block; color: var(--on-ink-muted); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+.contact-item span { display: block; font-size: 17px; font-weight: 500; user-select: all; overflow-wrap: anywhere; }
+.copy { background: transparent; color: var(--on-ink); border: 1px solid rgba(247,245,242,.35); border-radius: 999px; padding: 7px 14px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: var(--font-body); flex: none; }
+.copy:hover { border-color: var(--on-ink); }
+
+footer { background: var(--ink); color: var(--on-ink-muted); font-size: 14px; border-top: 1px solid rgba(247,245,242,.12); }
+footer .wrap { padding-block: 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+footer p.disclaimer { max-width: 62ch; }
+
+@media (max-width: 860px) {
+  .hero-body, .split { grid-template-columns: 1fr; }
+  .scan { width: 300px; }
+  .steps { grid-template-columns: repeat(2, 1fr); }
+  .audience { grid-template-columns: 1fr; gap: 24px; }
+  .nav-links { display: none; }
+}
+@media (max-width: 560px) {
+  .stats, .steps, .metrics, .contact-grid { grid-template-columns: 1fr; }
+  .founder { grid-template-columns: 1fr; }
+  section.block { padding-block: 64px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pulse { animation: pulse 4s ease-in-out infinite; transform-origin: 200px 190px; }
+  @keyframes pulse { 0%,100% { opacity: .9; transform: scale(1); } 50% { opacity: 1; transform: scale(1.04); } }
+}
+</style>
+<style>html,body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+
+
+<header class="hero">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="#top" aria-label="Febricor home">
+        <svg viewBox="16 16 128 128" aria-hidden="true"><defs><radialGradient id="lg" cx="88" cy="70" r="78" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFF6E8"/><stop offset=".16" stop-color="#FFD166"/><stop offset=".42" stop-color="#FF8C42"/><stop offset=".72" stop-color="#FF6B35"/><stop offset="1" stop-color="#E0461A"/></radialGradient><clipPath id="lc"><circle cx="80" cy="80" r="64"/></clipPath></defs><circle cx="80" cy="80" r="64" fill="url(#lg)"/><g clip-path="url(#lc)" fill="none" stroke="#FFFFFF" stroke-opacity=".55" stroke-width="3"><circle cx="88" cy="70" r="18"/><circle cx="88" cy="70" r="34"/><circle cx="88" cy="70" r="50"/></g></svg>
+        Febricor
+      </a>
+      <div class="nav-links">
+        <a href="#problem">Why it matters</a>
+        <a href="#how">How it works</a>
+        <a href="#progress">Progress</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+    <div class="hero-body" id="top">
+      <div>
+        <p class="eyebrow">ThermalSense by Febricor</p>
+        <h1>Breast cancer screening that goes where mammography can’t</h1>
+        <p class="hero-lede">ThermalSense pairs a portable thermal camera with on-device AI, so pharmacists, nurses and community health workers can identify women who need diagnostic imaging, close to home.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#contact">Partner with us</a>
+          <a class="btn btn-ghost" href="#how">See how it works</a>
+        </div>
+      </div>
+      <div class="scan" aria-hidden="true">
+        <svg viewBox="0 0 400 400">
+          <defs>
+            <radialGradient id="heat" cx="200" cy="190" r="190" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#FFF6E8"/><stop offset=".14" stop-color="#FFD166"/><stop offset=".36" stop-color="#FF8C42"/><stop offset=".62" stop-color="#FF6B35" stop-opacity=".75"/><stop offset="1" stop-color="#0D1B3E" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle class="pulse" cx="200" cy="190" r="190" fill="url(#heat)"/>
+          <g fill="none" stroke="#FFF6E8" stroke-opacity=".5" stroke-width="2">
+            <circle cx="200" cy="190" r="40"/><circle cx="200" cy="190" r="80"/><circle cx="200" cy="190" r="120"/><circle cx="200" cy="190" r="160" stroke-opacity=".25"/>
+          </g>
+          <g stroke="#F7F5F2" stroke-width="3" fill="none" stroke-linecap="round">
+            <path d="M40 60 V40 H60"/><path d="M340 40 H360 V60"/><path d="M360 340 V360 H340"/><path d="M60 360 H40 V340"/>
+          </g>
+        </svg>
+        <span class="scan-label">Thermal pattern analysis · on device</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="block" id="problem">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Why it matters</p>
+        <h2>When breast cancer is found changes everything</h2>
+        <p>Many women in rural and underserved communities face long drives, long waits and real costs to get a mammogram, so too many cancers are found late.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>&gt;99%</strong><p>5-year relative survival when breast cancer is caught while still localized</p></div>
+        <div class="stat late"><strong>32%</strong><p>5-year relative survival once it has spread to distant parts of the body</p></div>
+      </div>
+      <p class="source">Source: American Cancer Society, based on SEER data for women diagnosed 2015–2021.</p>
+    </div>
+  </section>
+
+  <section class="block" id="how">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">How it works</p>
+        <h2>A screening visit in four steps</h2>
+        <p>ThermalSense is designed as an adjunctive triage tool. It helps decide who should be referred for diagnostic imaging; it does not replace mammography.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Capture</h3><p>A trained operator takes thermal images with a portable FLIR ONE Edge Pro camera. No radiation, no compression.</p></li>
+        <li><h3>Analyze</h3><p>An AI model running on the device looks for abnormal heat patterns associated with breast tumors.</p></li>
+        <li><h3>Triage</h3><p>The app returns a clear result: routine follow-up, or refer for imaging.</p></li>
+        <li><h3>Refer</h3><p>Women who are flagged are referred to a provider for diagnostic imaging.</p></li>
+      </ol>
+      <p class="note">Images are encrypted and stay on the device by default. The operator can share them with another healthcare provider when needed.</p>
+    </div>
+  </section>
+
+  <section class="block" id="who">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Who it’s for</p>
+        <h2>Built for the places women already go</h2>
+      </div>
+      <div class="audience">
+        <div><h3>Pharmacies</h3><p>Add breast screening to pharmacy wellness stations with a compact kit and a software subscription.</p></div>
+        <div><h3>Hospitals and health systems</h3><p>Equip outreach teams and rural clinics with healthcare worker kits.</p></div>
+        <div><h3>Community health programs</h3><p>Bring screening to mobile clinics and community events in underserved areas.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="progress">
+    <div class="wrap split">
+      <div>
+        <div class="head" style="margin-bottom:28px">
+          <p class="eyebrow">Progress</p>
+          <h2>Early results and what comes next</h2>
+          <p>Our model is a ResNet50 fine-tuned on the public DMR-IR breast thermography dataset and optimized to run on the device. These are preliminary research results.</p>
+        </div>
+        <div class="metrics">
+          <div class="metric"><strong>0.92</strong><span>AUC on validation data</span></div>
+          <div class="metric"><strong>~87%</strong><span>Validation accuracy</span></div>
+        </div>
+      </div>
+      <div>
+        <ul class="checks">
+          <li>Working prototype built on the FLIR ONE Edge Pro thermal camera</li>
+          <li>Febricor LLC formed in Tennessee</li>
+          <li>Regulatory path defined: Class II adjunctive triage device via FDA 510(k), with a software-as-a-medical-device layer</li>
+          <li><b>Next:</b> partner with physicians and a hospital IRB to collect clinical data and validate the model on real patients</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="team">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Team</p>
+        <h2>Founded in Memphis, Tennessee</h2>
+      </div>
+      <div class="founder">
+        <div class="monogram" aria-hidden="true">RH</div>
+        <div>
+          <h3>Roberta Henriquez</h3>
+          <p class="role">Founder &amp; CEO</p>
+          <p class="bio">Roberta is completing a double degree in Electrical Engineering and Computer Engineering at the University of Memphis. She designed and trained the ThermalSense AI model and built the hardware prototype, with the goal of making early breast cancer screening reachable for every community.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="contact block" id="contact">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Contact</p>
+      <h2>Partner with us</h2>
+      <p>We’re looking for physician and hospital partners, pharmacy and rural health pilot sites, and investors in medtech and digital health.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-item"><div><small>Email</small><span id="email">roberta.henriquez04@gmail.com</span></div><button class="copy" type="button" data-copy="email">Copy</button></div>
+      <div class="contact-item"><div><small>Phone</small><span id="phone">(731) 333-4719</span></div><button class="copy" type="button" data-copy="phone">Copy</button></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Febricor LLC · Tennessee</p>
+    <p class="disclaimer">ThermalSense is an investigational device in development. It is not FDA-cleared and is not intended to replace mammography or diagnosis by a medical professional.</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.copy').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.copy);
+    var text = el.textContent.trim();
+    function done() { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1600); }
+    function fallback() { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selected'; }
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+  });
+});
+</script>
+
+</body>
+</html>
